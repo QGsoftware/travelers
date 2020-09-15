@@ -6,13 +6,14 @@
     Discord Icon Link 1:<input id="disc1" value="https://cdn.discordapp.com/avatars/476567649451638816/8f6724cf75bc84586f259a57f83c722f.png?size=128"><br>
     Discord Icon Link 2:<input id="disc2" value="https://cdn.discordapp.com/avatars/223887696228122624/e840277c4fb70163a15a81703cdb94d2.png?size=128"><br>
     Discord Icon Link 3:<input id="disc3" value="https://cdn.discordapp.com/avatars/310479911406141442/baa6e48a3556b5adb2c04c6ce3e7a41f.png?size=128"><br>
-    <button onclick="updateimgs()">Update Images</button>
+    <button onclick="iconsize = 320">Large Icons</button><button onclick="iconsize = 128">Small Icons</button><button onclick="updateimgs()">Update Images</button><br>
     <button onclick="build()">Build</button>
     <br>
     <canvas id="myCanvas" width="1280" height="720"></canvas>
     <script>
         var canvas = document.getElementById("myCanvas");
         var ctx = canvas.getContext("2d");
+        var iconsize = 128;
         
         function updateimgs() {
             document.getElementById("guest1").src = document.getElementById("disc1").value;
@@ -29,15 +30,27 @@
             
             if (document.getElementById("disc1").value != "") {
                 
-                ctx.drawImage(guest1, 1100, 50);
+                if (iconsize == 320) {
+                    ctx.drawImage(guest1,0,0,guest1.width,guest1.height,908,50,iconsize,iconsize);
+                } else {
+                    ctx.drawImage(guest1,0,0,guest1.width,guest1.height,1100,50,iconsize,iconsize);
+                }
             }
             if (document.getElementById("disc2").value != "") {
                 
-                ctx.drawImage(guest2, 950, 50);
+                if (iconsize == 320) {
+                    ctx.drawImage(guest2,0,0,guest2.width,guest2.height,566,50,iconsize,iconsize);
+                } else {
+                    ctx.drawImage(guest2,0,0,guest2.width,guest2.height,950,50,iconsize,iconsize);
+                }
             }
             if (document.getElementById("disc3").value != "") {
                 
-                ctx.drawImage(guest3, 800, 50);
+                if (iconsize == 320) {
+                    //thumbnail not big enough
+                } else {
+                    ctx.drawImage(guest3,0,0,guest3.width,guest3.height,800,50,iconsize,iconsize);
+                }
             }
             
             ctx.fillStyle = "#f3f3f3";
